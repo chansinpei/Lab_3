@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chan Sin Pei - Personal Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url('https://eskipaper.com/images/background-pictures-13.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: rgba(0, 0, 139, 0.8);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: darkblue;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: darkblue;
+            color: white;
+        }
+
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* UPDATED HOME SECTION STYLES */
+        .home-content {
+            text-align: center;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .floating-square-frame {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .frame-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            transform: rotate(5deg);
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0,0,139,0.2);
+        }
+        
+        .photo-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 12px;
+            background: white;
+            border-radius: 5px;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .photo-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,139,0.3);
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid #eee;
+            border-radius: 3px;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, darkblue, #add8e6);
+            border-radius: 12px;
+            z-index: 0;
+            filter: blur(15px);
+            opacity: 0.7;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .section-title {
+            color: darkblue;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid darkblue;
+            width: 100%;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+
+        /* REST OF YOUR ORIGINAL STYLES */
+        .biodata-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .biodata-label {
+            font-weight: bold;
+            color: darkblue;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid darkblue;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .hobby-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: darkblue;
+        }
+
+        .hobby-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hobby-details.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .hobby-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hobby-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .campus-life {
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: rgba(173, 216, 230, 0.3);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .event-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .event-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 15px;
+            background-color: white;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 139, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: darkblue;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #000080;
+            transform: translateY(-3px);
+        }
+
+        /* Hide all sections initially */
+        section {
+            display: none;
+        }
+
+        /* Show active section */
+        section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .biodata-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-square-frame {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hobby-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .hobby-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to My Personal Website</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#biodata" class="nav-link">Biodata</a></li>
+                <li><a href="#hobbies" class="nav-link">Hobbies</a></li>
+                <li><a href="#campus-life" class="nav-link">Campus Life</a></li>
+            </ul>
+        </nav>
+
+        <!-- UPDATED HOME SECTION -->
+        <section id="home-section" class="content-section active">
+            <div class="home-content">
+                <div class="floating-square-frame">
+                    <div class="glow-effect"></div>
+                    <div class="frame-background"></div>
+                    <div class="photo-container">
+                        <img src="peiphoto.jpeg" alt="Chan Sin Pei" class="profile-photo">
+                    </div>
+                </div>
+                
+                <h2 class="section-title">Chan Sin Pei</h2>
+                
+                <p class="welcome-text">
+                    Hello! I'm Chan Sin Pei, a passionate IT student with diverse interests in programming, 
+                    fitness, and outdoor activities. This website showcases my personal journey, hobbies, 
+                    and memorable campus experiences.
+                </p>
+                
+                <div class="button-container">
+                    <a href="#biodata" class="btn nav-link">View My Biodata</a>
+                    <a href="#hobbies" class="btn nav-link">Explore My Hobbies</a>
+                    <a href="#campus-life" class="btn nav-link">See Campus Life</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- REST OF YOUR ORIGINAL SECTIONS (UNCHANGED) -->
+        <section id="biodata-section" class="content-section">
+            <h2 class="section-title">Biodata</h2>
+            <img src="photo.jpg" alt="Chan Sin Pei" class="profile-img">
+            
+            <div class="biodata-grid">
+                <div class="biodata-label">Name:</div>
+                <div>Chan Sin Pei</div>
+                
+                <div class="biodata-label">Date of Birth:</div>
+                <div>25/08/2003</div>
+                
+                <div class="biodata-label">Religion:</div>
+                <div>Buddhism</div>
+                
+                <div class="biodata-label">Race:</div>
+                <div>Chinese</div>
+                
+                <div class="biodata-label">Address:</div>
+                <div>
+                    No 10, Jalan Robena 1<br>
+                    Parit Raja<br>
+                    Batu Pahat<br>
+                    Johor
+                </div>
+                
+                <div class="biodata-label">Mobile Phone:</div>
+                <div>601156857438</div>
+                
+                <div class="biodata-label">Social Media:</div>
+                <div>Facebook - Sin Pei Chan</div>
+                
+                <div class="biodata-label">Website:</div>
+                <div>Github - chansinpei</div>
+                
+                <div class="biodata-label">Course and Institution:</div>
+                <div>Bachelor of Information Technology with Honours</div>
+                
+                <div class="biodata-label">Programming Skills:</div>
+                <div>HTML, CSS, JavaScript, Java, Python</div>
+            </div>
+        </section>
+
+        <section id="hobbies-section" class="content-section">
+            <h2 class="section-title">Hobbies</h2>
+            <p>Click on any hobby to see more details and photos:</p>
+            
+            <div class="hobbies-container">
+                <div class="hobby-card" onclick="showHobbyDetails('gym')">
+                    <div class="hobby-icon">🏋️</div>
+                    <h3>Gym</h3>
+                    <p>Regular workout to stay fit and healthy</p>
+                </div>
+                
+                <div class="hobby-card" onclick="showHobbyDetails('yoga')">
+                    <div class="hobby-icon">🧘</div>
+                    <h3>Yoga</h3>
+                    <p>For mental peace and flexibility</p>
+                </div>
+                
+                <div class="hobby-card" onclick="showHobbyDetails('jogging')">
+                    <div class="hobby-icon">🏃</div>
+                    <h3>Jogging</h3>
+                    <p>Morning runs to start the day fresh</p>
+                </div>
+                
+                <div class="hobby-card" onclick="showHobbyDetails('hiking')">
+                    <div class="hobby-icon">⛰️</div>
+                    <h3>Hiking</h3>
+                    <p>Exploring nature and challenging myself</p>
+                </div>
+            </div>
+            
+            <!-- Gym Details -->
+            <div id="gym-details" class="hobby-details">
+                <h3>My Gym Routine</h3>
+                <div class="hobby-images">
+                    <img src="gym1.jpeg" alt="Me at the gym" class="hobby-image">
+                    <img src="gym2.jpeg" alt="Me at the gym" class="hobby-image">
+                    <img src="gym3.jpeg" alt="Me at the gym" class="hobby-image">
+                    <img src="gym4.jpeg" alt="Me at the gym" class="hobby-image">
+                </div>
+                <p>I regularly visit the gym 4-5 times a week to maintain my fitness. My routine includes weight training, cardio exercises, and core workouts. Staying active helps me maintain energy for my studies and personal projects.</p>
+                <button onclick="hideHobbyDetails()" class="btn">Close</button>
+            </div>
+            
+            <!-- Yoga Details -->
+            <div id="yoga-details" class="hobby-details">
+                <h3>My Yoga Practice</h3>
+                <div class="hobby-images">
+                    <img src="yoga1.jpg" alt="Me doing yoga" class="hobby-image">
+                    <img src="yoga2.jpg" alt="Me doing yoga" class="hobby-image">
+                    <img src="yoga3.jpg" alt="Me doing yoga" class="hobby-image">
+                    <img src="yoga4.jpg" alt="Me doing yoga" class="hobby-image">
+                </div>
+                <p>Yoga helps me find balance between my academic life and personal well-being. I practice yoga every morning to start my day with clarity and focus. It's amazing how much it improves both physical flexibility and mental resilience.</p>
+                <button onclick="hideHobbyDetails()" class="btn">Close</button>
+            </div>
+            
+            <!-- Jogging Details -->
+            <div id="jogging-details" class="hobby-details">
+                <h3>My Jogging Sessions</h3>
+                <div class="hobby-images">
+                    <img src="jogging1.jpg" alt="Me jogging" class="hobby-image">
+                    <img src="jogging2.jpg" alt="Me jogging" class="hobby-image">
+                    <img src="jogging3.jpg" alt="Me jogging" class="hobby-image">
+                    <img src="jogging4.jpg" alt="Me jogging" class="hobby-image">
+                </div>
+                <p>I love jogging around campus in the early mornings. It's a great way to explore the area while getting exercise. My usual route takes me around the lake and through the botanical gardens - about 5km total.</p>
+                <button onclick="hideHobbyDetails()" class="btn">Close</button>
+            </div>
+            
+            <!-- Hiking Details -->
+            <div id="hiking-details" class="hobby-details">
+                <h3>My Hiking Adventures</h3>
+                <div class="hobby-images">
+                    <img src="hiking1.jpeg" alt="Me hiking" class="hobby-image">
+                    <img src="hiking2.jpeg" alt="Me hiking" class="hobby-image">
+                    <img src="hiking3.jpeg" alt="Me hiking" class="hobby-image">
+                    <img src="hiking4.jpeg" alt="Me hiking" class="hobby-image">
+                </div>
+                <p>Hiking is my favorite weekend activity. I've conquered several peaks including Gunung Lambak with my friends. The challenge of reaching the summit and the breathtaking views make all the effort worthwhile.</p>
+                <button onclick="hideHobbyDetails()" class="btn">Close</button>
+            </div>
+        </section>
+
+        <section id="campus-life-section" class="content-section">
+            <h2 class="section-title">Campus Life</h2>
+            
+            <div class="campus-life">
+                <p>My campus life has been an incredible mix of learning, adventures, and unforgettable moments! 🌟 I've joined amazing programs like the <span class="highlight">Laravel Bootcamp</span>, explored the <span class="highlight">International Book Fair in Kuala Lumpur</span>, and attended the inspiring <span class="highlight">Graduation Aspire</span> event.</p>
+                
+                <p>When it comes to fun, my friends and I made unforgettable memories—splashing around at <span class="highlight">Desaru Adventure Waterpark</span>, celebrating birthdays, and experiencing the vibrant <span class="highlight">Feskon Carnival Festival</span>. One of my favorite adventures? Hiking <span class="highlight">Gunung Lambak in Kluang</span> with my friends and even our awesome lecturers! 🏞️</p>
+                
+                <p>Every day brings something new—whether it's learning, exploring, or just hanging out with the best people. Campus life isn't just about studies; it's about the experiences that shape us! 💛</p>
+            </div>
+            
+            <h3 style="margin-top: 30px; color: darkblue;">Memorable Events</h3>
+            
+            <div class="event-gallery">
+                <div class="event-card">
+                    <img src="laravelbootcamp.jpeg" alt="Laravel Bootcamp">
+                    <div class="event-info">
+                        <h4>Laravel Bootcamp</h4>
+                        <p>Intensive web development training</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="internationalbookfair.jpeg" alt="International Book Fair">
+                    <div class="event-info">
+                        <h4>International Book Fair</h4>
+                        <p>Exploring knowledge in Kuala Lumpur</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="desaruwaterpark.jpeg" alt="Desaru Waterpark">
+                    <div class="event-info">
+                        <h4>Desaru Adventure</h4>
+                        <p>Fun day with friends at waterpark</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="gununglambak.jpeg" alt="Gunung Lambak">
+                    <div class="event-info">
+                        <h4>Gunung Lambak Hike</h4>
+                        <p>Challenging adventure with friends</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 Chan Sin Pei | All Rights Reserved
+        </footer>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Hide all sections
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                const targetId = this.getAttribute('href').substring(1) + '-section';
+                document.getElementById(targetId).classList.add('active');
+                
+                // Update active link styling
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.style.backgroundColor = '';
+                    navLink.style.color = '';
+                });
+                
+                this.style.backgroundColor = 'darkblue';
+                this.style.color = 'white';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Hobby details functionality
+        function showHobbyDetails(hobby) {
+            // Hide all hobby details first
+            document.querySelectorAll('.hobby-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show selected hobby details
+            document.getElementById(`${hobby}-details`).classList.add('active');
+            
+            // Scroll to the details
+            document.getElementById(`${hobby}-details`).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function hideHobbyDetails() {
+            // Hide all hobby details
+            document.querySelectorAll('.hobby-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+        }
+
+        // Set home as default active section
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.nav-link[href="#home"]').style.backgroundColor = 'darkblue';
+            document.querySelector('.nav-link[href="#home"]').style.color = 'white';
+        });
+    </script>
+</body>
+</html>
